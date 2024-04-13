@@ -1,6 +1,6 @@
 # Reporting Tool: Multiple FortiSIEM Alert Analys
 
-Esta herramienta de reportes automatizados es capaz de generar un reporte en formato DOCX con graficos y tablas sobre las alertas incidentes de seguridad alertadas reportadas por uno o mas FortiSIEMs hacia un correo en concreto.
+Esta herramienta de reportes automatizados utilizando el lenguaje de programacion Python y la API de FortiSIEM es capaz de generar un reporte en formato DOCX con graficos y tablas sobre las alertas incidentes de seguridad alertadas reportadas por uno o mas FortiSIEMs hacia un correo en concreto.
 
 Obtenga un analisis sobre la cantidad de alertas recibidas hacia una direccion de correo en un ambiente en donde varios servidores de FortiSIEM envian a una misma direccion de correo electronico, ideal para SOC MSSP en donde administran diferentes clientes y cada uno en un servidor a parte.
 
@@ -10,6 +10,8 @@ Con esta herramienta obtendra un TOP de las alertas que mas se generan, una tabl
 ## Requisitos
 - Sistema Operativo: Windows/Linux
 - Python3
+- Version de FortiSIEM: v5.X en adelante
+- Ultima version testeada: v7.1 
 
 Librerias:
 ```bash
@@ -41,7 +43,7 @@ allsiem = {
 ```bash
 python3 mfaa.py
 ```
-Username: --> Nombre de usuario que usa para ingresar el FortiSIEM
-Password: --> Contraseña que usa para ingresar el FortiSIEM (Esta oculto)
-Cantidad de Dias hacia atras --> Numero de dias en relativo para extraer la data del FortISIEM
-Especifica el correo de notificaciones --> Correo electronico usado para enviar las alertas desde el FortiSIEM (esto lo puede encontrar en la politica de notificaciones de incidentes del FortiSIEM)
+- Username: --> Nombre de usuario que usa para ingresar el FortiSIEM
+- Password: --> Contraseña que usa para ingresar el FortiSIEM (Esta oculto)
+- Cantidad de Dias hacia atras --> Numero de dias en relativo para extraer la data del FortISIEM
+- Especifica el correo de notificaciones --> Correo electronico usado para enviar las alertas desde el FortiSIEM (esto lo puede encontrar en la politica de notificaciones de incidentes del FortiSIEM)
