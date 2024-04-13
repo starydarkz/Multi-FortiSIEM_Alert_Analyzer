@@ -1,11 +1,10 @@
 # Reporting Tool: Multiple FortiSIEM Alert Analys
 
-Esta herramienta de reportes automatizados utilizando el lenguaje de programacion Python y la API de FortiSIEM es capaz de generar un reporte en formato DOCX con graficos y tablas sobre las alertas incidentes de seguridad alertadas reportadas por uno o mas FortiSIEMs hacia un correo en concreto.
+Esta herramienta de generación de informes automatizados, desarrollada con el lenguaje de programación Python y aprovechando la API de FortiSIEM, tiene la capacidad de producir informes en formato DOCX que incluyen gráficos y tablas detalladas sobre las alertas e incidentes de seguridad reportados por uno o varios servidores FortiSIEM y dirigidos a direcciones de correo específicas.
 
-Obtenga un analisis sobre la cantidad de alertas recibidas hacia una direccion de correo en un ambiente en donde varios servidores de FortiSIEM envian a una misma direccion de correo electronico, ideal para SOC MSSP en donde administran diferentes clientes y cada uno en un servidor a parte.
+Ofrece un análisis exhaustivo de la cantidad de alertas recibidas en una dirección de correo determinada, especialmente útil en entornos donde varios servidores FortiSIEM envían alertas a una misma dirección de correo electrónico. Esta funcionalidad es ideal para SOC MSSP que gestionan múltiples clientes, cada uno con su propio servidor FortiSIEM.
 
-Con esta herramienta obtendra un TOP de las alertas que mas se generan, una tabla con todos los casos de uso reportadas, un TOP de cuales servidores de FortiSIEM son los que mas generan alertas y mas funciones de analisis.
-
+Con esta herramienta, obtendrás un ranking de las alertas más frecuentes, una tabla detallada de todos los casos de uso reportados, así como un análisis de los servidores FortiSIEM que generan la mayor cantidad de alertas. Además, proporciona una amplia gama de funciones analíticas adicionales para una mejor comprensión y gestión de la seguridad.
 
 ## Requisitos
 - Sistema Operativo: Windows/Linux
