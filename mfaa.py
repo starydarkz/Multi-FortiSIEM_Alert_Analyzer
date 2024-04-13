@@ -1,13 +1,12 @@
 #Reporting Tool: Multiple FortiSIEM Alert Analysis | Version:2.0  | Created By: StaryDarkz  | Telegram: https://t.me/StaryDarkz 
 
-import docx, operator, time, datetime, re, httplib2
+import docx, time, datetime, re, httplib2
 import matplotlib.pyplot as plt
-import numpy as np
 from docx.enum.text import WD_ALIGN_PARAGRAPH 
-from xml.dom.minidom import Node, parseString, parse
+from xml.dom.minidom import Node, parseString
 from Resources.config import allsiem
 import xml.etree.ElementTree as ET
-from reportlab.platypus import SimpleDocTemplate
+
 
 #Funciones DOCX
 def add_table(plantilla, data): 
