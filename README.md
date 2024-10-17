@@ -1,4 +1,4 @@
-# Multi-FortiSIEM Alert Analyzer
+<img src="Resources/logo.png" alt="Avatar del Bot"/>
 
 Esta herramienta de generación de informes automatizados, desarrollada con el lenguaje de programación Python aprovecha la API de FortiSIEM para producir informes en formato DOCX que incluyen gráficos y tablas detalladas sobre las alertas e incidentes de seguridad reportados por uno o varios servidores FortiSIEM hacia una única dirección de correo electrónico.
 
