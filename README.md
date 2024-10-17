@@ -30,7 +30,7 @@ git clone https://github.com/starydarkz/Multiple_FortiSIEM_Alert_Analys.git
 ```bash
 pip3 install -r requeriments.txt
 ```
-4. Configurar lista de Servidores FortiSIEM
+3. Configurar lista de Servidores FortiSIEM
 ```
 1. Editar archivo de configuracion config.py
 3. Agregar la lista de SIEMS y eliminar la lista de ejemplo, como se muestra a continuacion:
@@ -41,7 +41,7 @@ allsiem = {
     }
 ```
 
-3. Ejecute la herramienta y rellene los datos solicitados:
+4. Ejecute la herramienta y rellene los datos solicitados:
 ```bash
 python3 mfaa.py
 ```
