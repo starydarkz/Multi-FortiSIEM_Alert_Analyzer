@@ -4,11 +4,19 @@ Esta herramienta de generación de informes automatizados, desarrollada con el l
 
 Ofrece un análisis exhaustivo de la cantidad de alertas recibidas en una dirección de correo determinada, especialmente útil en entornos donde varios servidores FortiSIEM envían alertas a una misma dirección de correo electrónico. Esta funcionalidad es ideal para SOC MSSP que gestionan múltiples clientes, cada uno con su propio servidor FortiSIEM.
 
-Con esta herramienta, obtendrás un ranking de las alertas más frecuentes, una tabla detallada de todos los casos de uso reportados, así como un análisis de los servidores FortiSIEM que generan la mayor cantidad de alertas. Este proyecto tiene como objetivo proporcionar una amplia gama de funciones analíticas adicionales para una mejor comprensión y gestión de la seguridad.
+Esta herramienta genera unu archivo .docx con las siguientes caracteristicas:
+- Grafico TOP 10 General de cantidad de alertas por instancias de SIEM  
+- Grafico TOP 10 General de cantidad de alertas por nombre de reglas
+- Grafico TOP 10 por instancia de SIEM de cantidad de alertas por nombre de regla
+- Grafico de cantidad de alertas por hora (24 horas)
+- Tablas de cantidad de alertas y reglas general y por instancia de SIEM
+- Detalles del patron de recurrencia por cliente de las alertas
+
+Este proyecto tiene como objetivo proporcionar una amplia gama de funciones analíticas adicionales para una mejor comprensión y gestión de la seguridad.
 
 ## Requisitos
 - Python3
-- Version de FortiSIEM: v5.X --> v7.1 
+- Version de FortiSIEM: v5.x --> v7.1 
 
 
 ## Descarga y Configuracion
