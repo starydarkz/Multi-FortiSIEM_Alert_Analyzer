@@ -16,7 +16,7 @@ Este proyecto tiene como objetivo proporcionar una amplia gama de funciones anal
 
 ## Requisitos
 - Python3
-- Version de FortiSIEM: v5.x --> v7.1 
+- Version de FortiSIEM: v5.x --> v7.2.4 
 
 
 ## Descarga y Configuracion
