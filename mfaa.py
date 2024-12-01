@@ -1,15 +1,4 @@
-#Multi-Fortisiem Alert Analyzer v3.0  | Created By: StaryDarkz  | Telegram: https://t.me/StaryDarkz 
-
-'''
-Novedades de la nueva version
-
-~Top Graficos de alertas por instancia de SIEM
-~Analisis de alertas general por hora
-~Analisis de recurrencia de alertas de incidentes
-~Mejora en el archivo de configuracion
-~Nuevo logo del proyecto
-~Mejor documentacion y organizacion de codigo
-'''
+#Multi-Fortisiem Alert Analyzer v3.1  | Created By: StaryDarkz  | Telegram: https://t.me/StaryDarkz 
 
 import docx, time, datetime, re, httplib2
 import matplotlib.pyplot as plt
@@ -41,6 +30,26 @@ def add_table(plantilla, data):
         row = table.add_row().cells
         row[0].text = incidente
         row[1].text = str(data[incidente])
+
+def add_table_patterns(plantilla, data): 
+
+    table = plantilla.add_table(rows = 0, cols=3, style = "Grid Table 4 - Accent 11")          
+    row = table.add_row().cells 
+
+    row[0].text = "Rule Name"
+    row[1].text = "Patrones"
+    row[2].text = "Count(*)"
+
+    for incidente in data.keys():
+        row = table.add_row().cells
+        row[0].text = incidente
+        
+        for element in data[incidente]:
+            element2 = element.replace("<![CDATA","")
+            element2 = element2.replace("]>","")
+            row[1].text = element2
+            row[2].text = str(data[incidente][element])
+
 
 def graficar_gbarras(data_json, gname):
     """ Grafico de barras"""
@@ -125,7 +134,7 @@ def select_query(xmlquery, input_time_user, email_alert):
     xml_incident_count = f"""<?xml version="1.0" encoding="UTF-8"?>
     <Reports>
     <Report baseline="" rsSync="">
-        <Name>Incident Notification Count</Name>
+        <Name>Multi_FortiSIEM Alert Analyzer</Name>
         <Description> Total de Notificaciones con email alert especificado</Description>
         <CustomerScope groupByEachCustomer="false">
         </CustomerScope>
@@ -151,7 +160,6 @@ def select_query(xmlquery, input_time_user, email_alert):
         <TimeZone/>
     </Report>
     </Reports>"""
- 
     if "xml_incident_count" == xmlquery:
         return xml_incident_count
 
@@ -179,7 +187,7 @@ def get_queryfromsiem(ip_siem, user, password, xml_query):
 
     resp, content = h.request(urlfirst, "POST", t2, header)
     
-    #print (resp, content)
+    #print ("Fisrt Response"resp, content)
     
     queryId = content.decode("utf-8")
     if "xml version" in queryId:
@@ -243,6 +251,7 @@ def get_queryfromsiem(ip_siem, user, password, xml_query):
             for i in range(num):
                 urlFinal = url + 'events/' + queryId + '/' + str((i * 1000)+1) + '/1000'
                 resp, content = h.request(urlFinal)
+                #print (resp, content)
                 if content != '':
                     outXML.append(content.decode("utf-8"))   
                     data = dumpXML(outXML)
@@ -368,22 +377,13 @@ def rule_pattern_analyzer(incidents):
 
         end_dic_data[rule] = detail_count
     
-    # for element in end_dic_data.keys():
-    #     print (element)
-    #     print (input())
-    #     print (end_dic_data[element])
-        
-    #     print (input())
-
-    
     max_values = {}
 
     for atributo, subatributos in end_dic_data.items():
         # Encuentra el subatributo con el valor máximo
         subatributo_max = max(subatributos, key=subatributos.get)
-        if subatributos[subatributo_max] > 10:
-            max_values[atributo] = {subatributo_max: subatributos[subatributo_max]}
-
+        if subatributos[subatributo_max] > 5:
+            max_values[atributo] = {subatributo_max: subatributos[subatributo_max]}            
     return (max_values)
 
 def count_by_hour(all_incidents):
@@ -442,6 +442,7 @@ def menu(select):
     elif select == "email_alert":
         print ("Especifica el correo de notificaciones:")
         email = input("Email: -->") 
+        return email
 
 def main(allsiem = allsiem):
     """ Ejecucion inicial """
@@ -541,8 +542,8 @@ def main(allsiem = allsiem):
         graficar_gbarras_CLIENTES(data_sorted , f"topincidents_{siem_name}")
         plantilla.add_picture(f"topincidents_{siem_name}.png", width=docx.shared.Cm(19), height=docx.shared.Cm(10))
         
-        plantilla.add_heading("Top Recurrencia por tipo de alerta [Max=10]", 2)
-        add_table(plantilla, all_patterns[siem_name])
+        plantilla.add_heading("Top Recurrencia por tipo de alerta [Min=5 Iguales]", 2)
+        add_table_patterns(plantilla, all_patterns[siem_name])
         
         plantilla.add_page_break()
    
